@@ -9,7 +9,7 @@ const tunisianGuides = [
   {
     id: 1,
     name: "Ahmed Ben Salah",
-    photo: "https://media.gettyimages.com/id/158392485/fr/photo/camel-caravan-in-the-sahara-desert.jpg?s=612x612&w=gi&k=20&c=8_7rJ8KU4XuJ4F8wKDQg_9xF2oI1QN4jP7u5m6RwDR8=",
+    photo: "/images/tunisia/guide-ahmed-ben-salah.jpg",
     age: 45,
     location: "Douz, Sahara",
     specialties: ["Désert du Sahara", "Culture Bédouine", "Astronomie"],
@@ -29,7 +29,7 @@ const tunisianGuides = [
   {
     id: 2,
     name: "Fatma Khelifi",
-    photo: "https://media.gettyimages.com/id/1895958613/fr/photo/hammamet-on-the-mediterranean-coast-in-tunisia.jpg?s=612x612&w=gi&k=20&c=4dZkchNUYqL8_8dU2-g_Y8Ct7L5_YJlsVFLBc0k1EQY=",
+    photo: "/images/tunisia/guide-fatma-khelifi.jpg",
     age: 38,
     location: "Djerba, Côte Est",
     specialties: ["Pêche Traditionnelle", "Vie Marine", "Artisanat Local"],
@@ -48,7 +48,7 @@ const tunisianGuides = [
   },
   {
     id: 3,    name: "Youssef Mokrani",
-    photo: "https://media.gettyimages.com/id/1493402574/fr/photo/sidi-bou-said.jpg?s=612x612&w=gi&k=20&c=YIvV2ZhGxBp4YLHGfGd0mDBvmZxGN8uC2uKLQE8rGX4=",
+    photo: "/images/tunisia/guide-youssef-mokrani.jpg",
     age: 42,
     location: "Sidi Bou Saïd",
     specialties: ["Musique Traditionnelle", "Histoire Culturelle", "Instruments"],
@@ -68,7 +68,7 @@ const tunisianGuides = [
   {
     id: 4,
     name: "Khadija Trabelsi",
-    photo: "https://media.gettyimages.com/id/525660553/fr/photo/tunis-landmark.jpg?s=612x612&w=gi&k=20&c=mE7wL3qR9xH4dG8jP2sK1uY5bN6tC9fV0z8oW7lQ3xE=",
+    photo: "/images/tunisia/guide-khadija-trabelsi.jpg",
     age: 51,
     location: "Sousse, Centre",
     specialties: ["Cuisine Authentique", "Marchés Locaux", "Traditions Culinaires"],
@@ -88,7 +88,7 @@ const tunisianGuides = [
   {
     id: 5,
     name: "Salim Ben Youssef",
-    photo: "https://media.gettyimages.com/id/101567860/fr/photo/houmt-souk-pottery-djerba-tunisia.jpg?s=612x612&w=gi&k=20&c=7QxZ2zK9vL3HdJ8uF6rBG4mE5wY9N1tPo8cS7x1QxR2=",
+    photo: "/images/tunisia/guide-salim-ben-youssef.jpg",
     age: 39,
     location: "Tunis, Médina",
     specialties: ["Artisanat Traditionnel", "Poterie", "Histoire"],
@@ -107,7 +107,7 @@ const tunisianGuides = [
   },  {
     id: 6,
     name: "Amina Hammami",
-    photo: "https://media.gettyimages.com/id/575664325/fr/photo/scenic-view-at-the-town-of-sidi-bou-said.jpg?s=612x612&w=gi&k=20&c=vL4bQ7zR2uG8xJ9tK3fH1mP6sY5wN8cE7oD1aB9qW3x=",
+    photo: "/images/tunisia/guide-amina-hammami.jpg",
     age: 44,
     location: "Tozeur, Oasis",
     specialties: ["Agriculture Oasienne", "Écologie", "Botanique"],
@@ -168,12 +168,7 @@ export function TunisianGuides() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ 
-                y: -15, 
-                scale: 1.03,
-                transition: { duration: 0.3 }
-              }}
-              className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100"
+              className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover-lift"
             >              {/* Photo de profil avec image authentique */}
               <div className="relative h-32 overflow-hidden">
                 <Image

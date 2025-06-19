@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Star, MapPin, Clock, Users, Heart } from 'lucide-react';
+import { Star, MapPin, Clock, Heart } from 'lucide-react';
 
 const tunisianExperiences = [
   {
@@ -157,7 +157,7 @@ export function TunisianExperiences() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {tunisianExperiences.map((experience, index) => (
+          {tunisianExperiences.map((experience) => (
             <motion.div
               key={experience.id}
               variants={cardVariants}

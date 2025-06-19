@@ -9,7 +9,6 @@ import {
   MessageCircle, 
   Download, 
   Edit,
-  Plus,
   User,
   CreditCard,
   Bell,

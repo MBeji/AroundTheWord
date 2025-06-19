@@ -69,7 +69,7 @@ export default function BookingConfirmationPage() {
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Booking Confirmed!</h1>
           <p className="text-lg text-gray-600">
-            Your amazing adventure awaits. We've sent confirmation details to your email.
+            Your amazing adventure awaits. We&apos;ve sent confirmation details to your email.
           </p>
         </div>
 
@@ -239,7 +239,7 @@ export default function BookingConfirmationPage() {
 
         {/* Next Steps */}
         <div className="text-center mt-8">
-          <h3 className="font-semibold mb-4">What's Next?</h3>
+          <h3 className="font-semibold mb-4">What&apos;s Next?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">

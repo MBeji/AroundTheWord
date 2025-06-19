@@ -155,7 +155,7 @@ export default function CreatorDashboardPage() {
             </div>
             <div className="flex-1">
               <p className="font-medium">New 5-star review</p>
-              <p className="text-sm text-gray-600">Japan Adventure - "Amazing experience!"</p>
+              <p className="text-sm text-gray-600">Japan Adventure - &quot;Amazing experience!&quot;</p>
             </div>
             <span className="text-sm text-gray-500">1 day ago</span>
           </div>

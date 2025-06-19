@@ -1,10 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Button, ButtonProps } from './button'; // Assuming ButtonProps is exported, or define locally if not
-import { cn } from '@/lib/utils'; // For checking merged classNames if necessary
 
 describe('Button Component', () => {
-  const defaultClasses = 'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
-
   // Helper to check base classes, variant classes, and size classes
   // Note: This is a simplified checker. For exact match, all classes from cn() in the component would need to be listed.
   // For robustness, it's better to check for specific functional classes rather than all visual utility classes.

@@ -1,6 +1,6 @@
 'use client'
 
-import { Mountain, Building, Waves, TreePine, Utensils, Users, Gamepad2, Sparkles } from 'lucide-react'
+import { Mountain, Building, Waves, TreePine, Users, Gamepad2, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 const categories = [

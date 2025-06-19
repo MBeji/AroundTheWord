@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Search, Filter, MapPin, Star, Clock, Users } from 'lucide-react'
+import { MapPin, Star, Clock, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { SearchBar } from '@/components/SearchBar'
 
 // Mock data - replace with real API calls
@@ -46,7 +45,6 @@ const mockItineraries = [
 ]
 
 export default function ExplorePage() {
-  const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [priceRange, setPriceRange] = useState([0, 5000])
 

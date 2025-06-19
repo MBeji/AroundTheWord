@@ -1,11 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Search, MapPin, Calendar, Users } from 'lucide-react'
 import Link from 'next/link'
 
 export function Hero() {
-  const [searchQuery, setSearchQuery] = useState('')
   const [destination, setDestination] = useState('')
   const [dates, setDates] = useState('')
   const [travelers, setTravelers] = useState('1')
@@ -13,7 +12,7 @@ export function Hero() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle search logic here
-    console.log({ searchQuery, destination, dates, travelers })
+    console.log({ destination, dates, travelers })
   }
 
   return (

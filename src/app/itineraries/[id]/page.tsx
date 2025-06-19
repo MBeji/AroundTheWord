@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { 
   MapPin, 
@@ -11,7 +10,6 @@ import {
   Heart, 
   Share2, 
   Users, 
-  DollarSign,
   MessageCircle,
   CheckCircle,
   ArrowLeft
@@ -148,7 +146,6 @@ The journey includes visits to iconic landmarks like Senso-ji Temple, Tokyo Skyt
 };
 
 export default function ItineraryDetailPage() {
-  const params = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [isLiked, setIsLiked] = useState(false);

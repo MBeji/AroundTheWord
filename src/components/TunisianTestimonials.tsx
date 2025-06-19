@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
@@ -9,7 +10,7 @@ const testimonials = [
     id: 1,
     name: "Marie Dubois",
     country: "France 🇫🇷",
-    avatar: "👩‍🦰",
+    avatar: "/images/tunisia/avatars/avatar-female-1.jpg",
     guide: "Ahmed Ben Salah",
     experience: "Safari Sahara 3 jours",
     rating: 5,
@@ -21,7 +22,7 @@ const testimonials = [
     id: 2,
     name: "Marco Rossi",
     country: "Italie 🇮🇹",
-    avatar: "👨‍🦱",
+    avatar: "/images/tunisia/avatars/avatar-male-1.jpg",
     guide: "Fatma Khelifi",
     experience: "Pêche traditionnelle Djerba",
     rating: 5,
@@ -33,7 +34,7 @@ const testimonials = [
     id: 3,
     name: "Emma Thompson",
     country: "Royaume-Uni 🇬🇧",
-    avatar: "👩‍🦳",
+    avatar: "/images/tunisia/avatars/avatar-female-2.jpg",
     guide: "Youssef Mokrani",
     experience: "Musique traditionnelle",
     rating: 5,
@@ -45,7 +46,7 @@ const testimonials = [
     id: 4,
     name: "Hans Mueller",
     country: "Allemagne 🇩🇪",
-    avatar: "👨‍🦲",
+    avatar: "/images/tunisia/avatars/avatar-male-2.jpg",
     guide: "Khadija Trabelsi",
     experience: "Cuisine & marchés",
     rating: 5,
@@ -57,7 +58,7 @@ const testimonials = [
     id: 5,
     name: "Sofia Andersson",
     country: "Suède 🇸🇪",
-    avatar: "👩‍🦱",
+    avatar: "/images/tunisia/avatars/avatar-female-3.jpg",
     guide: "Salim Ben Youssef",
     experience: "Artisanat médina",
     rating: 5,
@@ -105,17 +106,20 @@ export function TunisianTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ 
-                y: -10, 
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover-lift"
             >
               {/* En-tête du témoignage */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div className="text-3xl">{testimonial.avatar}</div>
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.avatar}
+                      alt={`Avatar de ${testimonial.name}`}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
                     <p className="text-sm text-gray-600">{testimonial.country}</p>

@@ -10,20 +10,35 @@ import * as THREE from 'three';
 // Composant 3D flottant pour représenter les destinations
 function FloatingElement({ position, color, text }: { position: [number, number, number], color: string, text: string }) {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+  const textRef = useRef<THREE.Object3D>(null); // Ref for Text3D
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.3;
       meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
     }
+    if (textRef.current) { // Make text face camera
+      textRef.current.lookAt(state.camera.position);
+    }
   });
 
   return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={0.5}>
+    <Float speed={2} rotationIntensity={0.8} floatIntensity={0.4}>
       <mesh ref={meshRef} position={position}>
-        <sphereGeometry args={[0.5, 32, 32]} />
-        <meshStandardMaterial color={color} roughness={0.3} metalness={0.7} />
+        <boxGeometry args={[0.8, 0.8, 0.8]} />
+        <meshStandardMaterial color={color} roughness={0.4} metalness={0.6} />
       </mesh>
+      <Text3D
+        ref={textRef}
+        // font="/fonts/Inter_Bold.json" // Font prop removed to attempt using default
+        position={[position[0], position[1] + 0.6, position[2]]} // Position text above the box
+        size={0.3}
+        height={0.05}
+        curveSegments={12}
+      >
+        {text}
+        <meshStandardMaterial color="white" />
+      </Text3D>
     </Float>
   );
 }
@@ -58,10 +73,9 @@ export function TunisianHero() {
         {/* Image principale : Sahara tunisien */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://media.gettyimages.com/id/509420688/fr/photo/dromedary-in-the-sahara-desert-of-ksar-ghilane-tunisia.jpg?s=2048x2048&w=gi&k=20&c=HnOGhqbCSDwTsK_PBGJ6h-qUaQkZ8ZZw9pL8hU3-2Sc=')`,
-          }}
-        />
+        >
+          <Image src="/images/tunisia/hero-background-sahara.jpg" alt="Vaste paysage désertique du Sahara tunisien avec des dunes de sable et un ciel clair" layout="fill" objectFit="cover" priority />
+        </div>
         
         {/* Overlay gradient pour la lisibilité */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
@@ -73,8 +87,8 @@ export function TunisianHero() {
           className="absolute top-20 right-20 w-64 h-48 rounded-xl overflow-hidden shadow-2xl"
         >
           <Image
-            src="https://images.unsplash.com/photo-1539650116574-75c0c6d73fb3?w=400&h=300&fit=crop&crop=center"
-            alt="Sidi Bou Said"
+            src="/images/tunisia/hero-floater-sidi-bou-said.jpg"
+            alt="Vue pittoresque du village blanc et bleu de Sidi Bou Saïd en Tunisie"
             width={256}
             height={192}
             className="w-full h-full object-cover"
@@ -88,8 +102,8 @@ export function TunisianHero() {
           className="absolute bottom-20 left-20 w-48 h-64 rounded-xl overflow-hidden shadow-2xl"
         >
           <Image
-            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=300&h=400&fit=crop&crop=center"
-            alt="Plage de Hammamet"
+            src="/images/tunisia/hero-floater-hammamet-beach.jpg"
+            alt="Plage sereine de Hammamet en Tunisie avec du sable doré et des eaux bleues"
             width={192}
             height={256}
             className="w-full h-full object-cover"
@@ -98,7 +112,7 @@ export function TunisianHero() {
       </div>
 
       {/* Background 3D Scene (réduit l'opacité) */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-20">
         <Tunisia3DScene />
       </div>
 
@@ -255,20 +269,11 @@ export function TunisianHero() {
                 transition={{ duration: 0.3 }}
                 className="col-span-2 relative h-64 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-yellow-600"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-6xl mb-2">🐪</div>
-                    <h3 className="text-2xl font-bold">Sahara Tunisien</h3>
-                    <p className="text-sm opacity-90">Dunes de Erg Chebbi</p>
-                  </div>
+                <Image src="/images/tunisia/hero-gallery-sahara-detail.jpg" alt="Dunes de sable majestueuses dans le Sahara Tunisien" layout="fill" objectFit="cover" className="rounded-2xl" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-30 rounded-2xl">
+                  <h3 className="text-2xl font-bold text-white">Sahara Tunisien</h3>
+                  <p className="text-sm text-white opacity-90">Aventure dans les dunes</p>
                 </div>
-                {/* Overlay de sable animé */}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-yellow-500/50 to-transparent"
-                  animate={{ x: [-20, 20, -20] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                />
               </motion.div>
 
               {/* Plages de Djerba */}
@@ -277,19 +282,10 @@ export function TunisianHero() {
                 transition={{ duration: 0.3 }}
                 className="relative h-48 rounded-2xl overflow-hidden shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-600"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-4xl mb-2">🏖️</div>
-                    <h4 className="text-lg font-bold">Plages de Djerba</h4>
-                  </div>
+                <Image src="/images/tunisia/hero-gallery-djerba-beach.jpg" alt="Plage idyllique de Djerba avec sable blanc et mer turquoise" layout="fill" objectFit="cover" className="rounded-2xl" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-30 rounded-2xl">
+                  <h4 className="text-lg font-bold text-white">Plages de Djerba</h4>
                 </div>
-                {/* Vagues animées */}
-                <motion.div
-                  className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-white/30 to-transparent"
-                  animate={{ scaleX: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                />
               </motion.div>
 
               {/* Médina traditionnelle */}
@@ -298,12 +294,9 @@ export function TunisianHero() {
                 transition={{ duration: 0.3 }}
                 className="relative h-48 rounded-2xl overflow-hidden shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-orange-800"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-4xl mb-2">🕌</div>
-                    <h4 className="text-lg font-bold">Médinas</h4>
-                  </div>
+                <Image src="/images/tunisia/hero-gallery-medina-architecture.jpg" alt="Architecture traditionnelle d'une médina tunisienne avec des détails complexes" layout="fill" objectFit="cover" className="rounded-2xl" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-30 rounded-2xl">
+                  <h4 className="text-lg font-bold text-white">Médinas Historiques</h4>
                 </div>
               </motion.div>
             </div>

@@ -117,12 +117,13 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="select-date" className="block text-sm font-medium text-gray-700 mb-2">
                   Select Date
                 </label>
                 <div className="relative">
                   <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <input
+                    id="select-date"
                     type="date"
                     value={bookingData.selectedDate}
                     onChange={(e) => handleDateSelect(e.target.value)}
@@ -132,12 +133,13 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="select-guests" className="block text-sm font-medium text-gray-700 mb-2">
                   Number of Guests
                 </label>
                 <div className="relative">
                   <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <select
+                    id="select-guests"
                     value={bookingData.guests}
                     onChange={(e) => handleGuestChange(parseInt(e.target.value))}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none"
@@ -150,10 +152,11 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="special-requests" className="block text-sm font-medium text-gray-700 mb-2">
                   Special Requests (Optional)
                 </label>
                 <textarea
+                  id="special-requests"
                   value={bookingData.specialRequests}
                   onChange={(e) => setBookingData({ ...bookingData, specialRequests: e.target.value })}
                   rows={3}
@@ -186,10 +189,11 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="billing-name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
                   </label>
                   <input
+                    id="billing-name"
                     type="text"
                     value={bookingData.billingName}
                     onChange={(e) => setBookingData({ ...bookingData, billingName: e.target.value })}
@@ -197,10 +201,11 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="billing-email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email
                   </label>
                   <input
+                    id="billing-email"
                     type="email"
                     value={bookingData.billingEmail}
                     onChange={(e) => setBookingData({ ...bookingData, billingEmail: e.target.value })}
@@ -210,12 +215,13 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="card-number" className="block text-sm font-medium text-gray-700 mb-2">
                   Card Number
                 </label>
                 <div className="relative">
                   <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <input
+                    id="card-number"
                     type="text"
                     placeholder="1234 5678 9012 3456"
                     value={bookingData.cardNumber}
@@ -227,10 +233,11 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="card-expiry" className="block text-sm font-medium text-gray-700 mb-2">
                     Expiry Date
                   </label>
                   <input
+                    id="card-expiry"
                     type="text"
                     placeholder="MM/YY"
                     value={bookingData.cardExpiry}
@@ -239,10 +246,11 @@ export function BookingFlow({ itinerary, isOpen, onClose }: BookingFlowProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="card-cvc" className="block text-sm font-medium text-gray-700 mb-2">
                     CVC
                   </label>
                   <input
+                    id="card-cvc"
                     type="text"
                     placeholder="123"
                     value={bookingData.cardCvc}

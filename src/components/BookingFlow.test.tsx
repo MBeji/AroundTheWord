@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { useRouter } from 'next/navigation';
 import { BookingFlow } from './BookingFlow';
 
@@ -122,7 +122,9 @@ describe('BookingFlow Component', () => {
     expect(screen.getByText('Processing...')).toBeInTheDocument();
 
     // Fast-forward timers
-    jest.advanceTimersByTime(2000);
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
 
     await waitFor(() => {
       expect(mockPush).toHaveBeenCalledWith('/booking/confirmation');
